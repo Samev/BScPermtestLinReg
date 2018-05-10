@@ -4,7 +4,7 @@
 
 #Heavy tails
 simpleHeavyTail <- function(n,beta1,v){
-  x <- runif(n, min=0, max=3)
+  x <- rexp(n,1)
   return(cbind(x, beta1*x + rt(n,v)/sqrt(v/(v-2))))
 }
 
@@ -26,7 +26,7 @@ simpleExpSkew_XUnif <- function(n, beta1, m){
 
 #Outliers
 simpleOutliers <- function(n,beta1, outliers){
-  x <- rnorm(n)
+  x <- rexp(n,1)
   error <- rnorm(n,0,1)
   out <- runif(n,0,1)>(1-outliers)
   error[out] <- sign(error[out])*10
